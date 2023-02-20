@@ -1,0 +1,11 @@
+hook:      
+  namespace: "Message Client"
+  source_path: "src/"
+  depends: []
+  actions:
+      message_client:
+        "login_or_register"
+        "get_user_keys"
+        "send_message"
+config:
+  example_api_url: ""

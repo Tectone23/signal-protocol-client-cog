@@ -1,9 +1,0 @@
-hook:      
-  namespace: "test"
-  source_path: "src/"
-  depends: []
-  actions:
-      hello:
-        "hello"
-config:
-  example_api_url: ""
