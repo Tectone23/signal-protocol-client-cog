@@ -1,2 +1,2 @@
-name: "Message Client"
-namespace: "message-client"
+name: "signal-protocol-client-cog"
+namespace: "signal-protocol-client-cog"

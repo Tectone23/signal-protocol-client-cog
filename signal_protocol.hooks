@@ -1,11 +1,15 @@
 hook:      
   namespace: "Message Client"
   source_path: "src/"
-  depends: []
+  depends: ["signal_protocol"]
   actions:
-      message_client:
+      signal_protocol_wrapper:
+        "signal_protocol_wrapper"
+      login_or_register:
         "login_or_register"
-        "get_user_keys"
+      send_message:
         "send_message"
+      get_users:
+        "get_users"
 config:
   example_api_url: ""
