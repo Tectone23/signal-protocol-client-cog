@@ -2,7 +2,7 @@ import os
 
 import requests
 
-SERVER_URL = os.getenv('SERVER_URL') or "http://localhost:8000"
+SERVER_URL = os.getenv('SERVER_URL') or "http://20.26.15.16:8000"
 USER = os.getenv('USERNAME') or "admin"
 PASSWORD = os.getenv('PASSWORD') or "reset123"
 

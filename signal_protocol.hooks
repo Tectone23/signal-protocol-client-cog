@@ -3,8 +3,8 @@ hook:
   source_path: "src/"
   depends: ["signal_protocol"]
   actions:
-      signal_protocol_wrapper:
-        "signal_protocol_wrapper"
+      receive_message:
+        "receive_message"
       login_or_register:
         "login_or_register"
       send_message:

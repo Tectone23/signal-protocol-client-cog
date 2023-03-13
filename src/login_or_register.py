@@ -10,7 +10,7 @@ from signal_protocol import curve, identity_key, state, storage
 username = args[0]
 email = args[1]
 
-SERVER_URL = os.getenv('SERVER_URL') or "http://localhost:8000"
+SERVER_URL = os.getenv('SERVER_URL') or "http://20.26.15.16:8000"
 USER = os.getenv('USERNAME') or "admin"
 PASSWORD = os.getenv('PASSWORD') or "reset123"
 
@@ -49,12 +49,15 @@ def get_user_details(user_id=None):
 
 user_details = get_user_details(user_id=None)
 print(user_details)
-if not user_details:
+if not user_details or user_details["username"] != username:
     data = {
         "username": username,
         "email": email,
     }
+    print("inside user details:")
+    print(data)
     resp = session.post(f"{SERVER_URL}/users/", data=data)
+    print(resp.text)
     resp.raise_for_status()
     user_details = resp.json()
     with open("user.json", 'w+') as json_file:
@@ -118,4 +121,4 @@ assert resp["identity_key"].encode("iso-8859-1") == store.get_identity_key_pair(
 assert resp["pre_key"].encode("iso-8859-1") == pre_key_pair.public_key().serialize()
 assert resp["pre_key_sig"].encode("iso-8859-1") == signed_pre_key_pair.serialize()
 assert resp["one_time_pre_key"].encode("iso-8859-1") == signed_pre_key_signature
-return "success"
+return user_details

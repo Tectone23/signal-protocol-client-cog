@@ -27,7 +27,7 @@ def get_user_details(user_id=None):
         return _user_details
 
 
-SERVER_URL = os.getenv('SERVER_URL') or "http://localhost:8000"
+SERVER_URL = os.getenv('SERVER_URL') or "http://20.26.15.16:8000"
 USER = os.getenv('USERNAME') or "admin"
 PASSWORD = os.getenv('PASSWORD') or "reset123"
 
@@ -70,4 +70,4 @@ message_res = req_session.post(f"{SERVER_URL}/messages/", data={
     "from_user": user_details['id']
 }).json()
 assert message_res['message'].encode("iso-8859-1") == ciphertext.serialize()
-return message.encode('utf8')
+return message_res
