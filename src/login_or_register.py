@@ -48,16 +48,12 @@ def get_user_details(user_id=None):
 
 
 user_details = get_user_details(user_id=None)
-print(user_details)
 if not user_details or user_details["username"] != username:
     data = {
         "username": username,
         "email": email,
     }
-    print("inside user details:")
-    print(data)
     resp = session.post(f"{SERVER_URL}/users/", data=data)
-    print(resp.text)
     resp.raise_for_status()
     user_details = resp.json()
     with open("user.json", 'w+') as json_file:
@@ -115,7 +111,6 @@ resp = session.post(f"{SERVER_URL}/bundles/", data={
     "user": user_details['id']
 }).json()
 
-print(resp)
 assert identity_key_pair.identity_key().serialize() == store.get_identity_key_pair().identity_key().serialize()
 assert resp["identity_key"].encode("iso-8859-1") == store.get_identity_key_pair().identity_key().serialize()
 assert resp["pre_key"].encode("iso-8859-1") == pre_key_pair.public_key().serialize()
